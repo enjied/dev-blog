@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Avatar url="https://accounts.meister.co/assets/activation-mail-f78380cded6b7ac687ecd0f304c57deee21a21acb769dbb8abb6741a532ecfbd.svg"></Avatar>
+    <Icon type="home"></Icon>
+    <Pager :total="12344" :limit="10" :current="current" @pageChange="changePage($event)"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Avatar from "./components/Avatar";
+import Icon from "./components/Icon";
+import Pager from "./components/Pager";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
+    Avatar,
+    Icon,
+    Pager
+  },
+  data() {
+    return {
+      current: 50
+    }
+  },
+  methods: {
+    changePage(n) {
+      console.log(n);
+      this.current = n
+    }
+  },
 }
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="less" scoped>
+.iconfont {
+  font-size: 66px;
+  color: red;
 }
 </style>
